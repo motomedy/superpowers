@@ -126,77 +126,32 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 ## Example Workflow
 
 ```
-You: I'm using Subagent-Driven Development to execute this plan.
+Command 1: Jarvis
 
-[Read plan file once: docs/superpowers/plans/feature-plan.md]
-[Extract all 5 tasks with full text and context]
-[Create TodoWrite with all tasks]
-
-Task 1: Hook installation script
-
-[Get Task 1 text and context (already extracted)]
-[Dispatch implementation subagent with full task text + context]
-
-Implementer: "Before I begin - should the hook be installed at user or system level?"
-
-You: "User level (~/.config/superpowers/hooks/)"
-
-Implementer: "Got it. Implementing now..."
-[Later] Implementer:
-  - Implemented install-hook command
-  - Added tests, 5/5 passing
-  - Self-review: Found I missed --force flag, added it
-  - Committed
-
-[Dispatch spec compliance reviewer]
-Spec reviewer: ✅ Spec compliant - all requirements met, nothing extra
-
-[Get git SHAs, dispatch code quality reviewer]
-Code reviewer: Strengths: Good test coverage, clean. Issues: None. Approved.
-
-[Mark Task 1 complete]
-
-Task 2: Recovery modes
-
-[Get Task 2 text and context (already extracted)]
-[Dispatch implementation subagent with full task text + context]
-
-Implementer: [No questions, proceeds]
-Implementer:
-  - Added verify/repair modes
-  - 8/8 tests passing
-  - Self-review: All good
-  - Committed
-
-[Dispatch spec compliance reviewer]
-Spec reviewer: ❌ Issues:
-  - Missing: Progress reporting (spec says "report every 100 items")
-  - Extra: Added --json flag (not requested)
-
-[Implementer fixes issues]
-Implementer: Removed --json flag, added progress reporting
-
-[Spec reviewer reviews again]
-Spec reviewer: ✅ Spec compliant now
-
-[Dispatch code quality reviewer]
-Code reviewer: Strengths: Solid. Issues (Important): Magic number (100)
-
-[Implementer fixes]
-Implementer: Extracted PROGRESS_INTERVAL constant
-
-[Code reviewer reviews again]
-Code reviewer: ✅ Approved
-
-[Mark Task 2 complete]
-
-...
-
-[After all tasks]
-[Dispatch final code-reviewer]
-Final reviewer: All requirements met, ready to merge
-
-Done!
+Command 2: 'prompt'
+Phase 1: Foundations
+Start by learning Python, APIs, basic data structures, and how modern AI assistants work. In this phase, your goal is not a full Jarvis; it is to understand how a program talks to an LLM, stores state, and triggers actions.[scribd +1]
+Build tiny exercises: text input, API calls, simple command routing, and a basic chat loop.[scribd]
+Phase 2: Single-purpose assistant
+Create one narrow assistant that does one thing well, such as scheduling, search, or file handling. This is where you first connect natural language to real actions through a small tool set.[aisera +1]
+Keep the scope limited so you can test reliability before adding memory, voice, or more tools.[machinelearningmastery +1]
+Phase 3: Memory and identity
+Add short-term session memory first, then long-term memory for preferences and important facts. Enterprise guidance emphasizes memory as a distinct architecture layer, not just chat history.[atlan +2]
+Next, define the assistant’s identity: role, tone, boundaries, permissions, and escalation behavior. That is the practical meaning of “soul” in an enterprise system.[covasant +1]
+Phase 4: Tool orchestration
+After memory, build the orchestration layer that decides which tool or service to use for each task. Production systems rely on planning, delegation, fallbacks, and workflow routing rather than one giant prompt.[kore +2]
+At this stage, connect only a few trusted tools, and make every action reversible or reviewable where possible.[deloitte +1]
+Phase 5: Security and governance
+Before scaling autonomy, add least-privilege access, human approval for risky actions, encryption, and prompt-injection defenses. Enterprise sources consistently treat governance as mandatory once the agent can write to real systems.[linkedin +3]
+Log every important decision, tool call, and outcome so you can audit what happened later.[versa-networks +2]
+Phase 6: Observability and testing
+Add tracing, metrics, and structured logs so you can see where the assistant succeeds or fails. Monitoring should cover latency, tool error rates, user satisfaction, and cost per task.[truefoundry +1]
+Test the system with simulated failures, bad inputs, and adversarial prompts before giving it broader access.[linkedin +1]
+Phase 7: Scale and specialize
+Once one workflow is stable, expand to adjacent workflows and reuse the same memory schema, policy layer, and orchestration patterns. Enterprise roadmaps recommend scaling horizontally only after one use case is validated.[techment +1]
+This is also where you can add voice, multi-agent delegation, and deeper integrations with enterprise systems.[assemblyai +1]
+Learning order
+A good beginner order is: Python, APIs, prompt design, memory, tool calling, security, then orchestration and observability. That sequence gives you a working assistant early while preventing the common mistake of building autonomy before control.
 ```
 
 ## Advantages
